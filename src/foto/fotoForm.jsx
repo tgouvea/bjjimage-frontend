@@ -1,7 +1,18 @@
 import React from 'react'
+import Grid from '../template/grid'
+import IconButton from '../template/iconButton'
 
 export default props => (
-    <div>
-        <h1> Formulário de cadastro </h1>
+    <div role='form' className='fotoForm'>
+
+        <Grid cols='12 9 10'>
+            <input id='description' className='form-control' placeholder='Adicione uma nova foto'></input>
+        </Grid>
+
+        <Grid cols='12 3 2'>
+            <IconButton style='primary' icon='plus'></IconButton>
+        </Grid>
+
+
     </div>
 )
