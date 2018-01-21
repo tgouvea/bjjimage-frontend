@@ -6,7 +6,7 @@ module.exports = {
     entry: './src/index.jsx',
 
     output: {
-        path: _dirname + '/public',
+        path: __dirname + '/public',
         filename: './app.js'
 
     },
@@ -20,7 +20,7 @@ module.exports = {
 
         extensions: ['', '.js', '.jsx'],
         alias: {
-            modules: _dirname + '/node_modules'
+            modules: __dirname + '/node_modules'
         }
     },
 
