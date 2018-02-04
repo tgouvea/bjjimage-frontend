@@ -5,7 +5,9 @@ import PageHeader from '../template/pageHeader'
 import FotoForm from './fotoForm'
 import FotoList from './fotoList'
 
-const URL = 'http://localhost:3003/api/fotos'
+/* const URL = 'http://localhost:3003/api/fotos' */
+
+const URL = 'http://localhost:8086/public/fotos'
 
 export default class Foto extends Component {
 
@@ -23,9 +25,13 @@ export default class Foto extends Component {
         this.refresh()
     }
 
-    refresh(description = ''){
+ /*   refresh(description = ''){
         const search = description ? `&description__regex=/${description}/` : ''
         axios.get(`${URL}?sort=-createdAt${search}`).then(resp => this.setState({...this.state, description, list: resp.data}))
+    }
+ */
+    refresh(description = ''){
+        axios.get(`${URL}?sort=asc`).then(resp => this.setState({...this.state, description, list: resp.data}))
     }
 
     handleChange(e){

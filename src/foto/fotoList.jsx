@@ -7,7 +7,7 @@ export default props => {
 
         const list = props.list || []
         return list.map(foto => (
-                <tr key={foto._id}>
+                <tr key={foto.id}>
                     <td className={foto.availableForSale ? 'availableForSale': ''}>{foto.description}</td>    
                     <td>
                         <IconButton style='success' icon='check' title='Disponibilizar para venda' hide={foto.availableForSale} onClick={() => props.handleAvailableForSale(foto)}></IconButton>
