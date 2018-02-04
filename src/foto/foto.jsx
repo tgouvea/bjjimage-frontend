@@ -5,6 +5,8 @@ import PageHeader from '../template/pageHeader'
 import FotoForm from './fotoForm'
 import FotoList from './fotoList'
 
+const URL = 'http://localhost:3003/api/fotos'
+
 export default class Foto extends Component {
 
     constructor(props){
@@ -12,6 +14,12 @@ export default class Foto extends Component {
         this.state = {description: '', list: []}
         this.handleChange = this.handleChange.bind(this)
         this.handleAdd = this.handleAdd.bind(this)
+
+        this.refresh()
+    }
+
+    refresh(){
+        axios.get(`${URL}?sort=-createdAt`).then(resp => this.setState({...this.state, description: '', list: resp.data}))
     }
 
     handleChange(e){
@@ -19,7 +27,9 @@ export default class Foto extends Component {
     }
 
     handleAdd() {
-            console.log(this.state.description)
+            const description = this.state.description
+            axios.post(URL, {description})
+                .then(resp => this.refresh())
     }
 
     render(){
@@ -29,7 +39,7 @@ export default class Foto extends Component {
                 <FotoForm description={this.state.description} 
                 handleChange={this.handleChange}
                 handleAdd={this.handleAdd}/>
-                <FotoList />
+                <FotoList list={this.state.list} />
             </div>
         )
     }
